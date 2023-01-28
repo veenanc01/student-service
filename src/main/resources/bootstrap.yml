@@ -1,0 +1,27 @@
+server:
+  port: 8083
+spring:
+  application:
+    name: STUDENT-SERVICE
+  cloud:
+    config:
+      override-system-properties: false
+      uri: http://localhost:8081
+    discovery:
+      enabled: true
+    gateway:
+      discovery:
+        locator:
+          STUDENT-SERVICE: true
+          enabled: true
+  eureka:
+    client:
+      serviceUrl:
+        defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+    instance:
+      preferIpAddress: true
+      hostname: localhost
+      #hostname: localhost spring.cloud.discovery.enabled=true
+      #spring.cloud.gateway.discovery.locator.lower-case-service-id= true
+      #spring.cloud.gateway.discovery.locator.enabled= true
+      #eureka.instance.hostname=localhost
